@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Book Now"
-        android:id="@+id/button2"
+        android:id="@+id/btnBook"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 </LinearLayout>

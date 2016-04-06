@@ -18,7 +18,8 @@
         <activity android:name=".Reservation" />
         <activity android:name=".ListRoom" />
         <activity android:name=".ContactDetail" />
-        <activity android:name=".ReservationSummary"></activity>
+        <activity android:name=".ReservationSummary" />
+        <activity android:name=".Checkout"></activity>
     </application>
 
 </manifest>

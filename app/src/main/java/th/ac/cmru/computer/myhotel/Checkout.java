@@ -8,15 +8,18 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-public class Reservation extends AppCompatActivity {
+public class Checkout extends AppCompatActivity {
     CalendarView calendar;
     Button btnNext;
-    String strCheckin;
+    String strCheckout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_checkout);
+
+        Bundle bundle = getIntent().getExtras();
+        final String strCheckin = bundle.getString("checkin");
 
         btnNext = (Button) findViewById(R.id.btnNext);
         calendar = (CalendarView) findViewById(R.id.calendar);
@@ -34,19 +37,23 @@ public class Reservation extends AppCompatActivity {
             //show the selected date as a toast
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                Toast.makeText(getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-                strCheckin = day + "/" + month + "/" + year;
+                Toast.makeText(getApplicationContext(), "CHECKOUT: "+day + "/" + month + "/" + year+
+                        "\nCHECK-IN"+ strCheckin, Toast.LENGTH_LONG).show();
+                strCheckout = day + "/" + month + "/" + year;
             }
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Checkout.class);
+                Intent intent = new Intent(getApplicationContext(), ListRoom.class);
                 intent.putExtra("checkin", strCheckin);
+                intent.putExtra("checkout", strCheckout);
                 startActivity(intent);
             }
         });
+
+
 
     }
 
