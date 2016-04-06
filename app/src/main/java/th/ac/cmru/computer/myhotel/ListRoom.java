@@ -26,9 +26,9 @@ public class ListRoom extends AppCompatActivity {
                 , R.drawable.pic_room, R.drawable.pic_room
                 , R.drawable.pic_room, R.drawable.pic_room };
 
-        final String[] listRoom = { "Superior Room 1\n 1,500", "Deluxe Room 1\n 2,500", "Suite Room 1\n 3,000"
-                , "Double BedRoom 1\n 3,200", "Single BedRoom 1\n 2,700","Superior Room 2\n 1,600", "Deluxe Room 2\n 2,600", "Suite Room 2\n 3,100"
-                , "Double BedRoom 2\n 3,300", "Single BedRoom 2\n 2,800"};
+        final String[] listRoom = { "Superior Room 1\n 1,500/Night", "Deluxe Room 1\n 2,500/Night", "Suite Room 1\n 3,000/Night"
+                , "Double BedRoom 1\n 3,200/Night", "Single BedRoom 1\n 2,700/Night","Superior Room 2\n 1,600/Night", "Deluxe Room 2\n 2,600/Night", "Suite Room 2\n 3,10/Night"
+                , "Double BedRoom 2\n 3,300/Night", "Single BedRoom 2\n 2,800/Night"};
 
         CustomAdapter adapter = new CustomAdapter(getApplicationContext(), listRoom, resId);
 

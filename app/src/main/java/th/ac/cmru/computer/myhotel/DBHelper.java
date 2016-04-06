@@ -126,4 +126,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return arrayList;
     }
+
+    public ArrayList<String> getUserData(int numRows){
+        ArrayList<String> arrayList = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM "+ USER_TABLE_NAME+" WHERE id = "+numRows;
+        Cursor res = db.rawQuery(sql,null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false){
+            arrayList.add("NAME: "+res.getString(res.getColumnIndex(USER_COLUMN_NAME))+
+                    "\n"+"PHONE: "+res.getString(res.getColumnIndex(USER_COLUMN_PHONE))+
+                    "\n"+"EMAIL: "+res.getString(res.getColumnIndex(USER_COLUMN_EMAIL)));
+            res.moveToNext();
+        }
+
+
+        return arrayList;
+    }
 }

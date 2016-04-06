@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ReservationSummary extends AppCompatActivity {
 
-    TextView roomName, checkinDate, checkoutDate, roomPrice;
+    TextView roomName, contactName;
     DBHelper myDB;
     Button btnConfirm;
 
@@ -23,6 +23,7 @@ public class ReservationSummary extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_summary);
 
         roomName = (TextView) findViewById(R.id.roomName);
+        contactName = (TextView) findViewById(R.id.contactName);
 //        checkinDate = (TextView) findViewById(R.id.checkinDate);
 //        checkoutDate = (TextView) findViewById(R.id.checkoutDate);
 //        roomPrice = (TextView) findViewById(R.id.roomPrice);
@@ -32,9 +33,10 @@ public class ReservationSummary extends AppCompatActivity {
         int numRows = myDB.numberOfRows();
 
         ArrayList arrayList = myDB.getAllData(numRows);
-        //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, arrayList);
-
         roomName.setText(arrayList.toString());
+
+        ArrayList arrayListUser = myDB.getUserData(numRows);
+        contactName.setText(arrayListUser.toString());
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
