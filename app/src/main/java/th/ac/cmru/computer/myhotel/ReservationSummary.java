@@ -1,8 +1,11 @@
 package th.ac.cmru.computer.myhotel;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,6 +15,7 @@ public class ReservationSummary extends AppCompatActivity {
 
     TextView roomName, checkinDate, checkoutDate, roomPrice;
     DBHelper myDB;
+    Button btnConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +23,26 @@ public class ReservationSummary extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_summary);
 
         roomName = (TextView) findViewById(R.id.roomName);
-        checkinDate = (TextView) findViewById(R.id.checkinDate);
-        checkoutDate = (TextView) findViewById(R.id.checkoutDate);
-        roomPrice = (TextView) findViewById(R.id.roomPrice);
+//        checkinDate = (TextView) findViewById(R.id.checkinDate);
+//        checkoutDate = (TextView) findViewById(R.id.checkoutDate);
+//        roomPrice = (TextView) findViewById(R.id.roomPrice);
+        btnConfirm = (Button) findViewById(R.id.btnConfirm);
 
         myDB = new DBHelper(this);
+        int numRows = myDB.numberOfRows();
 
-        ArrayList arrayList = myDB.getAllData();
+        ArrayList arrayList = myDB.getAllData(numRows);
         //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, arrayList);
 
         roomName.setText(arrayList.toString());
 
-    }
-
-    public void showData(){
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

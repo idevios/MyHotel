@@ -28,33 +28,6 @@
         android:id="@+id/roomName"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20dp"
-        android:text="checkin_date"
-        android:id="@+id/checkinDate"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20dp"
-        android:text="checkout_date"
-        android:id="@+id/checkoutDate"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20dp"
-        android:text="room_price"
-        android:id="@+id/roomPrice"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

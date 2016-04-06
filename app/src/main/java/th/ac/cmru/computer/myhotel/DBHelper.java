@@ -35,12 +35,12 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE room " +
-                "(id int primary key auto_increment, " +
+                "(id integer primary key autoincrement, " +
                 "checkin text, " +
                 "checkout text, " +
                 "name text );";
         String sqlUser = "CREATE TABLE user " +
-                "(id int primary key auto_increment, " +
+                "(id integer primary key autoincrement, " +
                 "name text, " +
                 "phone text, " +
                 "email text );";
@@ -109,17 +109,17 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.delete(ROOM_TABLE_NAME,"id=?",new String[]{id});
     }
 
-    public ArrayList<String> getAllData(){
+    public ArrayList<String> getAllData(int numRows){
         ArrayList<String> arrayList = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM "+ ROOM_TABLE_NAME;
+        String sql = "SELECT * FROM "+ ROOM_TABLE_NAME+" WHERE id = "+numRows;
         Cursor res = db.rawQuery(sql,null);
         res.moveToFirst();
 
         while (res.isAfterLast() == false){
-            arrayList.add(res.getString(res.getColumnIndex(ROOM_COLUMN_NAME))+
-                    "\n"+res.getString(res.getColumnIndex(ROOM_COLUMN_IN))+
-                    "\n"+res.getString(res.getColumnIndex(ROOM_COLUMN_OUT)));
+            arrayList.add("Room: "+res.getString(res.getColumnIndex(ROOM_COLUMN_NAME))+
+                    "\n"+"CHECK-IN: "+res.getString(res.getColumnIndex(ROOM_COLUMN_IN))+
+                    "\n"+"CHECK-OUT: "+res.getString(res.getColumnIndex(ROOM_COLUMN_OUT)));
             res.moveToNext();
         }
 
